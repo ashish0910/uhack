@@ -78,7 +78,7 @@ fieldset {
   padding: 10px;
 }
 
-#contact input[type="text"]:hover,
+/* #contact input[type="text"]:hover,
 #contact input[type="email"]:hover,
 #contact input[type="tel"]:hover,
 #contact input[type="url"]:hover,
@@ -87,10 +87,10 @@ fieldset {
   -moz-transition: border-color 0.3s ease-in-out;
   transition: border-color 0.3s ease-in-out;
   border: 1px solid #aaa;
-}
+} */
 
 #contact textarea {
-  height: 100px;
+  height: 200px;
   max-width: 100%;
   resize: none;
 }
@@ -102,7 +102,7 @@ fieldset {
   background: rgb(255,0,34);
   color: #FFF;
   margin: 0 0 5px;
-  padding: 10px;
+  padding: 8px;
   font-size: 15px;
 }
 
