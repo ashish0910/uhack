@@ -1,13 +1,6 @@
 <?php 
-session_start();
-require_once('db.php');
-// $emotion=$_SESSION['emotion'];
-//       $query = "SELECT * FROM `$emotion`";
-//       $result = $connection->query($query);
-//       while ($row = $result->fetch_assoc()){
-//         $task=$row['task'];
-//         echo $task."<br>";
-//       }
+ session_start();
+ require_once('db.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
