@@ -32,7 +32,7 @@ if(isset($_SESSION)){
         echo "Looks like you are feeling ".$json['facial_emotion'][0]['tag']."<br>" ;
         // echo $json['facial_emotion'][0]['score'] ;
         $emotion = $json['facial_emotion'][0]['tag'];
-
+        $_SESSION['emotion']=$emotion;
         if(($emotion=="Sad")||($emotion=="Happy")||($emotion=="Angry")||($emotion=="Neutral"))
         {
             $query = "SELECT * FROM `$emotion`";
@@ -46,7 +46,7 @@ if(isset($_SESSION)){
             echo "Looks you are not at all fine right now and need urgent help" ;
         } 
     }
-    session_destroy();
+
 }
 
 # when sending a image file
@@ -79,17 +79,23 @@ if(isset($_SESSION)){
 
 </form> -->
 
-<form action="emotion.php" method="POST">
-<textarea name="img-data" id="img-text"></textarea>
-<button type="submit" name="submit" value="Upload">submit</button>
-</form>
-
 <div class="booth">
     <video id="video" height="300" width="400"></video>
     <a href="#" id="capture" class="booth-capture-button">Take Photo</a>
     <canvas id="canvas" width="400" height="300"></canvas>
     <img src="" alt="photo of you" id="photo">
 </div>
+<form action="emotion.php" method="POST">
+<textarea name="img-data" id="img-text" style="display:none;"></textarea>
+<button type="submit" name="submit" value="Upload">submit</button>
+</form>
+<?php 
+    if(isset($_SESSION)){
+        if(isset($_SESSION['emotion'])){
+            echo "Are you Sure ?" ;
+        }
+    }
+?>
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

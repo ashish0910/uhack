@@ -11,6 +11,9 @@
   <div class="dashboard-container">
     <div class="activities-container">
       <div class="activities-heading">Recommended activities</div>
+      <?php 
+      
+      ?>
     </div>
     <div class="sub-dashboard">
       <div class="video-container" style="z-index: 1">

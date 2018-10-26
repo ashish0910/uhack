@@ -1,3 +1,11 @@
+<?php 
+  session_start();
+  if(isset($_POST)){
+    if(isset($_POST['feedback'])){
+      $_SESSION['feedback']=$_POST['feedback'];
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +17,7 @@
 </head>
 <body>
         <div class="container">  
-                <form id="contact" action="" method="post">
+                <form id="contact" action="form.php" method="post">
                   <h3>Feedback Form</h3>
                   <!-- <fieldset>
                     <input placeholder="Your name" type="radio" tabindex="1" required autofocus>
@@ -24,7 +32,7 @@
                     <input placeholder="Your Web Site (optional)" type="url" tabindex="4" required>
                   </fieldset> -->
                   <fieldset>
-                    <textarea placeholder="Would you like to share anything with us..." tabindex="5" required></textarea>
+                    <textarea placeholder="Would you like to share anything with us..." name="feedback" tabindex="5"></textarea>
                   </fieldset>
                   <fieldset>
                     <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
