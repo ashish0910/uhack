@@ -1,99 +1,50 @@
-<?php
-session_start();
-require_once('db.php');
-require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
-# Setting your API key
-set_api_key("SqohU2ZpR8OFy33GOXP7vB5naKWTwIzF3bojA7OKeR0");
-
-if($_POST){
-    if($_POST['img-data']){
-        echo "image data present";
-        $imgData = str_replace(' ','+',$_POST['img-data']);
-        $imgData =  substr($imgData,strpos($imgData,",")+1);
-        $imgData = base64_decode($imgData);
-        // Path where the image is going to be saved
-        $filePath = $_SERVER['DOCUMENT_ROOT']. '/uhack/profile/temp.png';
-        // Write $imgData into the image file
-        $file = fopen($filePath, 'w');
-        fwrite($file, $imgData);
-        fclose($file);
-        $_SESSION['image']="temp.png" ;
-    }
-}
-
-if(isset($_SESSION)){
-    if(isset($_SESSION['image'])){
-        # when sending a image file
-        $path_to_image = "profile/".$_SESSION['image'];
-        $str=facial_emotion($path_to_image);
-        // echo $str;
-        $json = json_decode($str, true);
-        // echo '<pre>' . print_r($json, true) . '</pre>';
-        echo "Looks like you are feeling ".$json['facial_emotion'][0]['tag']."<br>" ;
-        // echo $json['facial_emotion'][0]['score'] ;
-        $emotion = $json['facial_emotion'][0]['tag'];
-
-        if(($emotion=="Sad")||($emotion=="Happy")||($emotion=="Angry")||($emotion=="Neutral"))
-        {
-            $query = "SELECT * FROM `$emotion`";
-            $result = $connection->query($query);
-            while ($row = $result->fetch_assoc()){
-                $task=$row['task'];
-                echo $task."<br>";
-            }
-        }
-        if(($emotion=="Sad")||($emotion=="Fear")||($emotion=="Angry")||($emotion=="Disgust")){
-            echo "Looks you are not at all fine right now and need urgent help" ;
-        } 
-    }
-}
-
-# when sending a image file
-
-// $path_to_image = "<path_to_image>";
-// echo facial_emotion($path_to_image);
-
-# when sending a image url
-
-// $url_to_image = "https://infoxpression.in/img/ashish.jpg";
-// echo facial_emotion_url($url_to_image);
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/main.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
-<!-- <form action="imageadd.php" method="POST" enctype="multipart/form-data">
-<label for="image">Add Image:</label>
-<input type="file" id="add-photo" accept="image/*" capture="camera" name="file">
-<button type="submit" name="submit" value="Upload">submit</button>
-
-</form> -->
-
-<form action="index.php" method="POST">
-<textarea name="img-data" id="img-text"></textarea>
-<button type="submit" name="submit" value="Upload">submit</button>
-</form>
-
-<div class="booth">
-    <video id="video" height="300" width="400"></video>
-    <a href="#" id="capture" class="booth-capture-button">Take Photo</a>
-    <canvas id="canvas" width="400" height="300"></canvas>
-    <img src="" alt="photo of you" id="photo">
-</div>
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-<script src="js/photo.js"></script>
+  <div class="jk-container">
+    <div class="heading">
+      <h1>How do you feel today?</h1>
+    </div>
+    <div class="options">
+      <div class="option"><span class="option-text" style="z-index:2">Happy</span>
+        <img src="http://yourdost-blog-images.s3-ap-southeast-1.amazonaws.com/wp-content/uploads/2016/03/25124217/happy-man.jpg" alt="" class="option-img">
+      </div>
+      <div class="option">
+        <span class="option-text" style="z-index:2">Sad</span>
+        <img src="https://3.bp.blogspot.com/-DrJqKERcZBE/V0me8N3-cKI/AAAAAAAAJSg/S2akaVFb8_Avf4nsfFqFa1k54gTPM3y4wCLcB/s1600/sad-images-10.jpg" alt="" class="option-img">
+      </div>
+      <div class="option">
+        <span style="z-index:2" class="option-text">Disgust</span>
+        <img src="http://thesocialrush.com/wp-content/uploads/2018/03/images-1-1.jpeg" alt="" class="option-img">
+      </div>
+      <div class="option">
+        <span style="z-index:2" class="option-text">Angry</span>
+        <img src="https://images.medicaldaily.com/sites/medicaldaily.com/files/styles/headline/public/2014/05/21/anger.jpg" alt="" class="option-img">
+      </div>
+      <div class="option">
+        <span class="option-text" style="z-index:2">Neutral</span>
+        <img src="https://i.ytimg.com/vi/7luz5pQ0gko/maxresdefault.jpg" alt="" class="option-img">
+      </div>
+      <div class="option">
+        <span class="option-text" style="z-index:2">Surprise</span>
+        <img src="https://theactivevoice.com/wp-content/uploads/2016/08/ThinkstockPhotos-178062396-1024x683.jpg" alt="" class="option-img">
+      </div>
+      <div class="option">
+        <span class="option-text" style="z-index:2">Fear</span>
+        <img src="https://www.midlandscbd.com/uploads/news-pictures/742-columbia-blog-post-image-20160712224917.jpeg" alt="" class="option-img">
+      </div>
+    </div>
+    <div class="not-sure">
+     <a href="emotion.php" target="_blank" style="text-decoration:none; color: white !important;">I am not sure of my emotion. Please help me</a>
+    </div>
+  </div>
 </body>
-
 </html>
