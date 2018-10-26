@@ -1,6 +1,11 @@
 <?php 
  session_start();
  require_once('db.php');
+ if(isset($_GET)){
+if(isset($_GET['emotion'])){
+$_SESSION['emotion'] = $_GET['emotion'];
+}
+ }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +23,7 @@
       <div class="activities-heading" style="width:99.5%;">Recommended activities</div>
       <div class="activities">
         <?php
-        $emotion=$_SESSION['emotion'];
+      $emotion=$_SESSION['emotion'];
       $query = "SELECT * FROM `$emotion`";
       $result = $connection->query($query);
       while ($row = $result->fetch_assoc()){
