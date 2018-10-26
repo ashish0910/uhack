@@ -1,0 +1,26 @@
+<html>
+<body>
+  <!-- The Gruveo embed's <iframe> will replace this <div> tag. -->
+  <div id="myembed"></div>
+ 
+  <script>
+    // This code loads the Gruveo Embed API code asynchronously.
+    var tag = document.createElement("script");
+    tag.src = "https://www.gruveo.com/embed-api/";
+    var firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+ 
+    // This function gets called after the API code downloads. It creates
+    // the actual Gruveo embed and passes parameters to it.
+    var embed;
+    function onGruveoEmbedAPIReady() {
+      embed = new Gruveo.Embed("myembed", {
+        responsive: 1,
+        embedParams: {
+          code: "uhack"
+        }
+      });
+    }
+  </script>
+</body>
+</html>
