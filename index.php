@@ -17,6 +17,7 @@ if($_POST){
         $file = fopen($filePath, 'w');
         fwrite($file, $imgData);
         fclose($file);
+        $_SESSION['image']="temp.png" ;
     }
 }
 
