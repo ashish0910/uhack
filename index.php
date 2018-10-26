@@ -10,6 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
   <style>
   a{
     text-decoration: none ;
