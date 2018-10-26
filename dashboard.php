@@ -1,6 +1,11 @@
 <?php 
 session_start();
 require_once('db.php');
+if(isset($_GET)){
+  if(isset($_GET['emotion'])){
+    $_SESSION['emotion']=$_GET['emotion'];
+  }
+}
 // $emotion=$_SESSION['emotion'];
 //       $query = "SELECT * FROM `$emotion`";
 //       $result = $connection->query($query);
