@@ -92,7 +92,7 @@ if(isset($_SESSION)){
 <?php 
     if(isset($_SESSION)){
         if(isset($_SESSION['emotion'])){
-            echo "Are you Sure ?" ;
+            header("Location: dashboard.php");
         }
     }
 ?>

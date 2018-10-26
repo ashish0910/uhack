@@ -1,18 +1,11 @@
 <?php 
-session_start();
-require_once('db.php');
-if(isset($_GET)){
-  if(isset($_GET['emotion'])){
-    $_SESSION['emotion']=$_GET['emotion'];
-  }
+ session_start();
+ require_once('db.php');
+ if(isset($_GET)){
+if(isset($_GET['emotion'])){
+$_SESSION['emotion'] = $_GET['emotion'];
 }
-// $emotion=$_SESSION['emotion'];
-//       $query = "SELECT * FROM `$emotion`";
-//       $result = $connection->query($query);
-//       while ($row = $result->fetch_assoc()){
-//         $task=$row['task'];
-//         echo $task."<br>";
-//       }
+ }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +22,7 @@ if(isset($_GET)){
       <div class="activities-heading" style="width:99.5%;">Recommended activities</div>
       <div class="activities">
         <?php
-        $emotion=$_SESSION['emotion'];
+      $emotion=$_SESSION['emotion'];
       $query = "SELECT * FROM `$emotion`";
       $result = $connection->query($query);
       while ($row = $result->fetch_assoc()){
