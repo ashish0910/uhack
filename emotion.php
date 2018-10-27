@@ -45,7 +45,7 @@ if($_POST){
             }
             
             if(isset($emotion)){
-                header("Location: dashboard.php");
+                header("Location: form.php?emotion=$emotion");
             }
         }
     
@@ -86,16 +86,18 @@ if($_POST){
 
 </form> -->
 
+<div class="cameraFlex">
 <div class="booth">
     <video id="video" height="300" width="400"></video>
     <a href="#" id="capture" class="booth-capture-button">Take Photo</a>
     <canvas id="canvas" width="400" height="300"></canvas>
-    <img src="" alt="photo of you" id="photo">
+    <!-- <img src="" alt="photo of you" id="photo"> -->
 </div>
 <form action="emotion.php" method="POST">
 <textarea name="img-data" id="img-text" style="display:none;"></textarea>
-<button type="submit" name="submit" value="Upload">submit</button>
-</form>
+<button class="submit-btn" type="submit" name="submit" value="Upload">submit</button>
+</form>    
+</div>
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

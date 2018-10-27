@@ -41,7 +41,7 @@ $_SESSION['emotion'] = $_GET['emotion'];
             <div style="border-color:rgb(31, 184, 0)"class="pic">
               <img src="https://www.logolynx.com/images/logolynx/e0/e0c16f4356ff503bf0173e3fdaebbd31.png" alt="">
             </div>
-            <a href='' class="connect-btn">Connect</a>
+            <a target="_blank" class="connect-btn">Connect</a>
           </div>
           <div class="other">
             <div style="border-color:rgb(31, 184, 0)" class="pic">

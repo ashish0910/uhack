@@ -1,9 +1,6 @@
-<?php
-session_start();
-require_once('db.php');
-require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
-# Setting your API key
-set_api_key("SqohU2ZpR8OFy33GOXP7vB5naKWTwIzF3bojA7OKeR0");
+<?php 
+  session_start();
+  require_once('db.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,98 +10,77 @@ set_api_key("SqohU2ZpR8OFy33GOXP7vB5naKWTwIzF3bojA7OKeR0");
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  <link rel="stylesheet" href="css/feelingForm.css">
+  <link href="css/styles.css" rel="stylesheet">
+  <style>
+  a{
+    text-decoration: none ;
+  }
+  </style>
 </head>
 <body>
-  <div class="form-heading">Breif Questionare</div>
-  
-  <form class="form" method="post" action="action.php">
-    <div class="inputField">
-      <div class="ques">I have been dealing with problems</div>
-      <div class="options">
-        <label class="option">
-          <input type="radio" name="q1" value="rare">Rare
-          <span class="checkmark"></span>
-        </label>
-        <label class="option">
-          <input type="radio" name="q1" value="often">Often
-          <span class="checkmark"></span>
-        </label>
-        <label class="option">
-          <input type="radio" name="q1" value="always">Always 
-          <span class="checkmark"></span>
-        </label>
-      </div>
+  <div class="jk-container">
+    <div class="heading">
+      <h1>How do you feel today?</h1>
     </div>
-
-    <div class="inputField">
-      <div class="ques">I have been thinking clearly</div>
-      <div class="options">
-        <label class="option">
-          <input type="radio" name="q1" value="rare">Rare
-          <span class="checkmark"></span>
-        </label>
-        <label class="option">
-          <input type="radio" name="q1" value="often">Often
-          <span class="checkmark"></span>
-        </label>
-        <label class="option">
-          <input type="radio" name="q1" value="always">Always 
-          <span class="checkmark"></span>
-        </label>
+    
+    <div class="options">
+    <a href="form.php?emotion=Happy"> 
+    <div class="option"><span class="option-text" style="z-index:2">Happy</span>
+        <img src="http://yourdost-blog-images.s3-ap-southeast-1.amazonaws.com/wp-content/uploads/2016/03/25124217/happy-man.jpg" alt="" class="option-img">
       </div>
-    </div>
-
-    <div class="inputField">
-      <div class="ques">I have been feeling close to other people</div>
-      <div class="options">
-        <label class="option">
-          <input type="radio" name="q1" value="rare">Rare
-          <span class="checkmark"></span>
-        </label>
-        <label class="option">
-          <input type="radio" name="q1" value="often">Often
-          <span class="checkmark"></span>
-        </label>
-        <label class="option">
-          <input type="radio" name="q1" value="always">Always 
-          <span class="checkmark"></span>
-        </label>
+      </a>
+      <!-- <a href="dashboard.php?emotion=Sad" style="position: absolute ;">
+      <div class="option">
+        <span class="option-text" style="z-index:2">Sad</span>
+        <img src="https://3.bp.blogspot.com/-DrJqKERcZBE/V0me8N3-cKI/AAAAAAAAJSg/S2akaVFb8_Avf4nsfFqFa1k54gTPM3y4wCLcB/s1600/sad-images-10.jpg" alt="" class="option-img" />
       </div>
-    </div>
-
-    <div class="inputField">
-      <div class="ques">I have been able to makeup my own mind about things</div>
-      <div class="options">
-        <label class="option">
-          <input type="radio" name="q1" value="rare">Rare
-          <span class="checkmark"></span>
-        </label>
-        <label class="option">
-          <input type="radio" name="q1" value="often">Often
-          <span class="checkmark"></span>
-        </label>
-        <label class="option">
-          <input type="radio" name="q1" value="always">Always 
-          <span class="checkmark"></span>
-        </label>
+      </a> -->
+      <!-- <a href="dashboard.php?emotion=Sad" style="position: absolute ;">
+      <div class="option">
+        <span class="option-text" style="z-index:2">Sad</span>
+        <img src="https://3.bp.blogspot.com/-DrJqKERcZBE/V0me8N3-cKI/AAAAAAAAJSg/S2akaVFb8_Avf4nsfFqFa1k54gTPM3y4wCLcB/s1600/sad-images-10.jpg" alt="" class="option-img" />
       </div>
+      </a> -->
+      <a href="form.php?emotion=Disgust">
+      <div class="option">
+        <span style="z-index:2" class="option-text">Disgust</span>
+        <img src="http://thesocialrush.com/wp-content/uploads/2018/03/images-1-1.jpeg" alt="" class="option-img">
+      </div>
+      </a>
+      <a href="form.php?emotion=Angry">
+      <div class="option">
+        <span style="z-index:2" class="option-text">Angry</span>
+        <img src="https://images.medicaldaily.com/sites/medicaldaily.com/files/styles/headline/public/2014/05/21/anger.jpg" alt="" class="option-img">
+      </div>
+      </a>
+      <a href="form.php?emotion=Neutral">
+      <div class="option">
+        <span class="option-text" style="z-index:2">Neutral</span>
+        <img src="https://i.ytimg.com/vi/7luz5pQ0gko/maxresdefault.jpg" alt="" class="option-img">
+      </div>
+      </a>
+      <a href="form.php?emotion=Surprise">
+      <div class="option">
+        <span class="option-text" style="z-index:2">Surprise</span>
+        <img src="https://theactivevoice.com/wp-content/uploads/2016/08/ThinkstockPhotos-178062396-1024x683.jpg" alt="" class="option-img">
+      </div>
+      </a>
+      <a href="form.php?emotion=Fear">
+      <div class="option">
+        <span class="option-text" style="z-index:2">Fear</span>
+        <img src="https://www.midlandscbd.com/uploads/news-pictures/742-columbia-blog-post-image-20160712224917.jpeg" alt="" class="option-img">
+      </div>
+      </a>
+      <a href="form.php?emotion=Sad">
+      <div class="option">
+        <span class="option-text" style="z-index:2">Sad</span>
+        <img src="https://3.bp.blogspot.com/-DrJqKERcZBE/V0me8N3-cKI/AAAAAAAAJSg/S2akaVFb8_Avf4nsfFqFa1k54gTPM3y4wCLcB/s1600/sad-images-10.jpg" alt="" class="option-img">
+      </div>
+      </a>
     </div>
-
-    <button class="submit-btn" id="capture" type="submit">SUBMIT</button>
-    <textarea name="img-data" id="img-text" style=""></textarea>
-  </form>
-  <div class="booth" style="display:none;">
-    <video id="video" height="300" width="400"></video>
-    <a href="#" class="booth-capture-button">Take Photo</a>
-    <canvas id="canvas" width="400" height="300"></canvas>
-    <img src="" alt="photo of you" id="photo">
-</div>
-<textarea name="img-data" id="img-text" style="display:none;"></textarea>
-  <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-<script src="js/photo.js"></script>
+    <div class="not-sure">
+     <a href="emotion.php" target="_blank" style="text-decoration:none; color: white !important;">I am not sure of my emotion. Please help me</a>
+    </div>
+  </div>
 </body>
 </html>

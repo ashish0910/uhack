@@ -22,9 +22,12 @@ if(isset($_POST)){
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <title>Document</title>
+     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+     <link rel="stylesheet" href="css/chat.css">
  </head>
  <body>
-
+     <div class="chat-container">
+     <div class="chat-heading">Chat Area</div>
  <div id="display">
  <?php
 $query = "SELECT * FROM `chat`";
@@ -32,16 +35,17 @@ $result = $connection->query($query);
 
 while($row = $result->fetch_assoc())
 {  if($row['sender']==1){
-    echo "you:".$row['message']."<br>";
+    echo "<div class='msg'>you: ".$row['message']."</div>"."<br>";
 } else {
-    echo "anonymous:".$row['message']."<br>";   
+    echo "<div class='msg'>Anonymous: ".$row['message']."</div>"."<br>";;   
 }
    
 }
 
 ?>
  </div>
- <form action="chat.php" method="post">
+</div>
+ <form class="form" action="chat.php" method="post">
     <input type="text" placeholder="enter message .. " name="message" required>
     <button type="submit" name="submit" value="Send">Send</button>
  </form>
