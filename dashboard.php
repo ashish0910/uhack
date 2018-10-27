@@ -34,11 +34,51 @@ $_SESSION['emotion'] = $_GET['emotion'];
       </div>
     </div>
     <div class="sub-dashboard">
-      <div class="video-container" style="z-index: 1">
-        <div class="activities-heading" style="animation-delay: 0.5s; font-size: 20px;">Mentors that may solve you problem</div>
+      <div class="video-container" style="z-index: 1;">
+        <div class="activities-heading" style="animation-delay: 0.5s; font-size: 20px; height:11.5vh">Mentors that may solve you problem</div>
+        <div class="others">
+          <div class="other">
+            <div style="border-color:rgb(31, 184, 0)"class="pic">
+              <img src="https://www.logolynx.com/images/logolynx/e0/e0c16f4356ff503bf0173e3fdaebbd31.png" alt="">
+            </div>
+            <a href='' class="connect-btn">Connect</a>
+          </div>
+          <div class="other">
+            <div style="border-color:rgb(31, 184, 0)" class="pic">
+            <img src="https://www.logolynx.com/images/logolynx/e0/e0c16f4356ff503bf0173e3fdaebbd31.png" alt="">
+            </div>
+            <a href='' class="connect-btn">Connect</a>
+          </div>
+          <div class="other">
+            <div style="border-color:rgb(31, 184, 0)" class="pic">
+            <img src="https://www.logolynx.com/images/logolynx/e0/e0c16f4356ff503bf0173e3fdaebbd31.png" alt="">
+            </div>
+            <a href='' class="connect-btn">Connect</a>
+          </div>
+        </div>
       </div>
-      <div class="others">
+      <div class="others-container">
         <div class="activities-heading" style="animation-delay: 0.7s; font-size: 20px;">Patients that had similar feelings like you</div>
+        <div class="others">
+          <div class="other">
+            <div class="pic">
+              <img src="http://simple4marry.com/assets/extra-images/male.png" alt="">
+            </div>
+            <a href='chat.php' target="_blank" class="url">#1562376</a>
+          </div>
+          <div class="other">
+            <div class="pic">
+            <img src="http://simple4marry.com/assets/extra-images/male.png" alt="">
+            </div>
+            <a href='chat.php' target="_blank" class="url">#6367635</a>
+          </div>
+          <div class="other">
+            <div class="pic">
+            <img src="http://simple4marry.com/assets/extra-images/male.png" alt="">
+            </div>
+            <a href='chat.php'  target="_blank" class="url">#5128797</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

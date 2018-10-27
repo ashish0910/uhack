@@ -19,35 +19,42 @@ if($_POST){
         fclose($file);
         $_SESSION['image']="temp.png" ;
     }
-}
-
-if(isset($_SESSION)){
-    if(isset($_SESSION['image'])){
-        # when sending a image file
-        $path_to_image = "profile/".$_SESSION['image'];
-        $str=facial_emotion($path_to_image);
-        // echo $str;
-        $json = json_decode($str, true);
-        // echo '<pre>' . print_r($json, true) . '</pre>';
-        echo "Looks like you are feeling ".$json['facial_emotion'][0]['tag']."<br>" ;
-        // echo $json['facial_emotion'][0]['score'] ;
-        $emotion = $json['facial_emotion'][0]['tag'];
-        $_SESSION['emotion']=$emotion;
-        if(($emotion=="Sad")||($emotion=="Happy")||($emotion=="Angry")||($emotion=="Neutral"))
-        {
-            $query = "SELECT * FROM `$emotion`";
-            $result = $connection->query($query);
-            while ($row = $result->fetch_assoc()){
-                $task=$row['task'];
-                echo $task."<br>";
+    if(isset($_SESSION)){
+        if(isset($_SESSION['image'])){
+            # when sending a image file
+            $path_to_image = "profile/".$_SESSION['image'];
+            $str=facial_emotion($path_to_image);
+            // echo $str;
+            $json = json_decode($str, true);
+            // echo '<pre>' . print_r($json, true) . '</pre>';
+            echo "Looks like you are feeling ".$json['facial_emotion'][0]['tag']."<br>" ;
+            // echo $json['facial_emotion'][0]['score'] ;
+            $emotion = $json['facial_emotion'][0]['tag'];
+            $_SESSION['emotion']=$emotion;        
+            if(($emotion=="Sad")||($emotion=="Happy")||($emotion=="Angry")||($emotion=="Neutral"))
+            {
+                $query = "SELECT * FROM `$emotion`";
+                $result = $connection->query($query);
+                while ($row = $result->fetch_assoc()){
+                    $task=$row['task'];
+                    echo $task."<br>";
+                }
+            }
+            if(($emotion=="Sad")||($emotion=="Fear")||($emotion=="Angry")||($emotion=="Disgust")){
+                echo "Looks you are not at all fine right now and need urgent help" ;
+            }
+            
+            if(isset($emotion)){
+                header("Location: dashboard.php");
             }
         }
-        if(($emotion=="Sad")||($emotion=="Fear")||($emotion=="Angry")||($emotion=="Disgust")){
-            echo "Looks you are not at all fine right now and need urgent help" ;
-        } 
+    
+    
+    
     }
-
 }
+
+
 
 # when sending a image file
 
@@ -89,13 +96,6 @@ if(isset($_SESSION)){
 <textarea name="img-data" id="img-text" style="display:none;"></textarea>
 <button type="submit" name="submit" value="Upload">submit</button>
 </form>
-<?php 
-    if(isset($_SESSION)){
-        if(isset($_SESSION['emotion'])){
-            header("Location: dashboard.php");
-        }
-    }
-?>
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
